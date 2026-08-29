@@ -16,11 +16,36 @@
             justify-content: center; 
             min-height: 100vh; 
             padding: 20px;
-            overflow-x: hidden;
+            overflow: hidden;
+            position: relative;
         }
+        
+        /* Background Video Configuration */
+        #bg-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        /* Semi-transparent overlay to ensure text readability */
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            z-index: -1;
+        }
+
         .matrix-glow {
             text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc;
         }
+        
         .pulse-text {
             color: #ff3333;
             font-weight: bold;
@@ -33,15 +58,17 @@
             50% { opacity: 1; text-shadow: 0 0 15px #ff3333, 0 0 30px #ff3333; }
             100% { opacity: 0.3; text-shadow: 0 0 5px #ff3333; }
         }
+        
         .cockpit-box {
             border: 2px solid #00ffcc;
-            background-color: #050b11;
+            background-color: rgba(5, 11, 17, 0.85);
             padding: 40px;
             max-width: 650px;
             width: 100%;
             text-align: center;
             box-shadow: 0 0 25px rgba(0, 255, 204, 0.15);
             border-radius: 4px;
+            z-index: 1;
         }
         h1 {
             font-size: 2rem;
@@ -69,6 +96,7 @@
             margin-top: 40px;
             display: flex;
             gap: 30px;
+            z-index: 1;
         }
         .social-link {
             color: #00ffcc;
@@ -78,7 +106,7 @@
             padding: 10px 20px;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1s;
+            letter-spacing: 1px;
         }
         .social-link:hover {
             background-color: #00ffcc;
@@ -89,6 +117,14 @@
     </style>
 </head>
 <body>
+
+    <!-- Video Element referencing your uploaded chrono.mp4 -->
+    <video autoplay loop muted playsinline id= "bg-video">
+        <source src="chrono.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Dark overlay layer -->
+    <div class="video-overlay"></div>
 
     <div class="cockpit-box">
         <h1 class="matrix-glow">CHRONOSANTINEL</h1>
@@ -108,8 +144,8 @@
     </div>
 
     <div class="links-container">
-        <a href="#" class="social-link">[ Twitter / X ]</a>
-        <a href="#" class="social-link">[ Telegram ]</a>
+        <a href="https://x.com" target="_blank" class="social-link">[ Twitter / X ]</a>
+        <a href="https://t.me" target="_blank" class="social-link">[ Telegram ]</a>
     </div>
 
 </body>
